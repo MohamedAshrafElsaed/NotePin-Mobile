@@ -1,0 +1,120 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+.metadata
+.packages
+pubspec.lock
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/captures/
+android/.externalNativeBuild/
+android/.cxx/
+*.apk
+*.aab
+*.jks
+*.keystore
+key.properties
+
+# iOS/macOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/.last_build_id
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/ephemeral/
+macos/Pods/
+**/Pods/
+**/.symlinks/
+**/DerivedData/
+*.xcworkspace
+
+# IDE - IntelliJ/Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# IDE - VS Code
+.vscode/
+
+# IDE - Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+lib/generated_plugin_registrant.dart
+
+# Test/Coverage
+coverage/
+*.lcov
+test/.test_coverage.dart
+
+# Logs
+*.log
+logs/
+
+# Miscellaneous
+*.class
+*.pyc
+*.swp
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# App bundles/binaries
+*.app
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Symbolication/Obfuscation
+app.*.symbols
+app.*.map.json
+
+# Exceptions (files to keep)
+!**/src/main/**/out/
+!**/src/test/**/out/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
