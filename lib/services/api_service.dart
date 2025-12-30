@@ -27,4 +27,28 @@ class ApiService {
       throw Exception('Upload error: $e');
     }
   }
+
+  Future<Map<String, dynamic>> uploadText(String text) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/text'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'text': text,
+          'timestamp': DateTime.now().toIso8601String(),
+        }),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = jsonDecode(response.body);
+        return data;
+      } else {
+        throw Exception('Text upload failed: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Text upload error: $e');
+    }
+  }
 }
