@@ -1,8 +1,9 @@
 // lib/features/recording/presentation/widgets/timer_display.dart
 import 'package:flutter/material.dart';
+
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_typography.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_typography.dart';
 
 class TimerDisplay extends StatefulWidget {
   final Duration duration;
@@ -57,8 +58,10 @@ class _TimerDisplayState extends State<TimerDisplay>
   }
 
   String _formatDuration() {
-    final minutes = widget.duration.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = widget.duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    final minutes =
+        widget.duration.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final seconds =
+        widget.duration.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$minutes:$seconds';
   }
 
@@ -79,7 +82,8 @@ class _TimerDisplayState extends State<TimerDisplay>
                     height: 12,
                     margin: const EdgeInsets.only(right: AppSpacing.sm),
                     decoration: BoxDecoration(
-                      color: AppColors.error.withOpacity(_blinkController.value),
+                      color:
+                          AppColors.error.withOpacity(_blinkController.value),
                       shape: BoxShape.circle,
                     ),
                   );

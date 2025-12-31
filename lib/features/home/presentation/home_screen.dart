@@ -1,17 +1,18 @@
 // lib/features/home/presentation/home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/secondary_button.dart';
-import '../../recording/presentation/recording_screen.dart';
-import '../../text_input/presentation/text_input_screen.dart';
 import '../../auth/presentation/auth_modal.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../notes_list/presentation/notes_list_screen.dart';
-import 'widgets/record_button.dart';
+import '../../recording/presentation/recording_screen.dart';
+import '../../text_input/presentation/text_input_screen.dart';
 import 'widgets/recent_notes_widget.dart';
+import 'widgets/record_button.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool autoStartRecording;

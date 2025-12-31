@@ -1,8 +1,9 @@
 // lib/core/widgets/loading_view.dart
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
-import '../theme/app_typography.dart';
 import '../theme/app_spacing.dart';
+import '../theme/app_typography.dart';
 
 class LoadingView extends StatelessWidget {
   final String message;

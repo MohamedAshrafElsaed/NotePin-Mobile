@@ -1,9 +1,11 @@
 // lib/features/recording/providers/recording_provider.dart
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import '../../../services/audio_service.dart';
+
 import '../../../core/utils/permissions.dart';
+import '../../../services/audio_service.dart';
 
 enum RecordingStatus {
   idle,
@@ -25,26 +27,40 @@ class RecordingProvider extends ChangeNotifier {
   bool _isPlaying = false;
 
   RecordingStatus get status => _status;
+
   Duration get elapsedTime => _elapsedTime;
+
   Duration get remainingTime => _remainingTime;
+
   String? get audioPath => _audioPath;
+
   String? get error => _error;
+
   bool get isPlaying => _isPlaying;
+
   bool get canRecord => _status == RecordingStatus.idle;
+
   bool get isRecording => _status == RecordingStatus.recording;
+
   bool get isPaused => _status == RecordingStatus.paused;
+
   bool get isStopped => _status == RecordingStatus.stopped;
+
   bool get isUploading => _status == RecordingStatus.uploading;
 
   String get formattedElapsedTime {
-    final minutes = _elapsedTime.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = _elapsedTime.inSeconds.remainder(60).toString().padLeft(2, '0');
+    final minutes =
+        _elapsedTime.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final seconds =
+        _elapsedTime.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$minutes:$seconds';
   }
 
   String get formattedRemainingTime {
-    final minutes = _remainingTime.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = _remainingTime.inSeconds.remainder(60).toString().padLeft(2, '0');
+    final minutes =
+        _remainingTime.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final seconds =
+        _remainingTime.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$minutes:$seconds';
   }
 
@@ -70,7 +86,8 @@ class RecordingProvider extends ChangeNotifier {
 
     try {
       final tempDir = await getTemporaryDirectory();
-      final filePath = '${tempDir.path}/recording_${DateTime.now().millisecondsSinceEpoch}.m4a';
+      final filePath =
+          '${tempDir.path}/recording_${DateTime.now().millisecondsSinceEpoch}.m4a';
 
       await _audioService.startRecording(filePath);
 
@@ -134,7 +151,8 @@ class RecordingProvider extends ChangeNotifier {
   }
 
   Future<void> stopRecording() async {
-    if (_status != RecordingStatus.recording && _status != RecordingStatus.paused) {
+    if (_status != RecordingStatus.recording &&
+        _status != RecordingStatus.paused) {
       return;
     }
 

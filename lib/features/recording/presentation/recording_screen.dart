@@ -1,15 +1,16 @@
 // lib/features/recording/presentation/recording_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/primary_button.dart';
 import '../../../services/api_service.dart';
-import '../providers/recording_provider.dart';
 import '../../process/process_screen.dart';
-import 'widgets/waveform_visualizer.dart';
+import '../providers/recording_provider.dart';
 import 'widgets/recording_controls.dart';
+import 'widgets/waveform_visualizer.dart';
 
 class RecordingScreen extends StatelessWidget {
   const RecordingScreen({super.key});
@@ -27,7 +28,8 @@ class _RecordingScreenContent extends StatefulWidget {
   const _RecordingScreenContent();
 
   @override
-  State<_RecordingScreenContent> createState() => _RecordingScreenContentState();
+  State<_RecordingScreenContent> createState() =>
+      _RecordingScreenContentState();
 }
 
 class _RecordingScreenContentState extends State<_RecordingScreenContent> {
@@ -152,9 +154,9 @@ class _RecordingScreenContentState extends State<_RecordingScreenContent> {
   }
 
   Future<void> _handleUpload(
-      BuildContext context,
-      RecordingProvider provider,
-      ) async {
+    BuildContext context,
+    RecordingProvider provider,
+  ) async {
     if (provider.audioPath == null) return;
 
     provider.setUploading();
@@ -261,7 +263,8 @@ class _RecordingView extends StatelessWidget {
             LinearProgressIndicator(
               value: provider.progress,
               backgroundColor: AppColors.borderLight,
-              valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(AppColors.primary),
               minHeight: 4,
               borderRadius: BorderRadius.circular(2),
             ),
@@ -342,7 +345,9 @@ class _StoppedView extends StatelessWidget {
             OutlinedButton.icon(
               onPressed: onPlayPause,
               icon: Icon(
-                provider.isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded,
+                provider.isPlaying
+                    ? Icons.stop_rounded
+                    : Icons.play_arrow_rounded,
               ),
               label: Text(provider.isPlaying ? 'Stop Preview' : 'Play Preview'),
               style: OutlinedButton.styleFrom(

@@ -1,6 +1,8 @@
 // lib/features/recording/presentation/widgets/waveform_visualizer.dart
 import 'dart:math';
+
 import 'package:flutter/material.dart';
+
 import '../../../../core/theme/app_colors.dart';
 
 class WaveformVisualizer extends StatefulWidget {
@@ -36,12 +38,12 @@ class _WaveformVisualizerState extends State<WaveformVisualizer>
       duration: const Duration(milliseconds: 100),
       vsync: this,
     )..addListener(() {
-      if (widget.isActive) {
-        setState(() {
-          _updateBarHeights();
-        });
-      }
-    });
+        if (widget.isActive) {
+          setState(() {
+            _updateBarHeights();
+          });
+        }
+      });
 
     if (widget.isActive) {
       _controller.repeat();
@@ -66,7 +68,10 @@ class _WaveformVisualizerState extends State<WaveformVisualizer>
   void _updateBarHeights() {
     for (int i = 0; i < _barHeights.length; i++) {
       // Create wave-like pattern with randomness
-      final baseHeight = sin((i / widget.barCount) * 2 * pi + _controller.value * 2 * pi) * 0.3 + 0.4;
+      final baseHeight =
+          sin((i / widget.barCount) * 2 * pi + _controller.value * 2 * pi) *
+                  0.3 +
+              0.4;
       final randomFactor = _random.nextDouble() * 0.3;
       _barHeights[i] = (baseHeight + randomFactor).clamp(0.2, 1.0);
     }
@@ -87,7 +92,7 @@ class _WaveformVisualizerState extends State<WaveformVisualizer>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: List.generate(
           widget.barCount,
-              (index) => AnimatedContainer(
+          (index) => AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             width: 3,
             height: widget.height * _barHeights[index],

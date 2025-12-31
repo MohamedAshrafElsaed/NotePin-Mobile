@@ -1,6 +1,8 @@
 // lib/features/processing/presentation/widgets/processing_animation.dart
 import 'dart:math';
+
 import 'package:flutter/material.dart';
+
 import '../../../../core/theme/app_colors.dart';
 
 class ProcessingAnimation extends StatefulWidget {
@@ -128,8 +130,8 @@ class _ParticleAnimationState extends State<ParticleAnimation>
       duration: const Duration(milliseconds: 50),
       vsync: this,
     )..addListener(() {
-      _updateParticles();
-    });
+        _updateParticles();
+      });
 
     _initializeParticles();
     _controller.repeat();
@@ -250,7 +252,7 @@ class StepIndicator extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         totalSteps,
-            (index) => AnimatedContainer(
+        (index) => AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(horizontal: 4),
           width: index == currentStep ? 24 : 8,

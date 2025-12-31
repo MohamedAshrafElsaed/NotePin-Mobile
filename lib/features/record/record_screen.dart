@@ -1,14 +1,16 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'record_controller.dart';
-import 'record_state.dart';
-import '../process/process_screen.dart';
+
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/primary_button.dart';
 import '../../services/api_service.dart';
 import '../../services/audio_service.dart';
+import '../process/process_screen.dart';
+import 'record_controller.dart';
+import 'record_state.dart';
 
 class RecordScreen extends StatefulWidget {
   const RecordScreen({super.key});
@@ -112,7 +114,8 @@ class _RecordScreenState extends State<RecordScreen> {
 
     try {
       final apiService = ApiService();
-      final result = await apiService.uploadRecording(_controller.state.audioPath!);
+      final result =
+          await apiService.uploadRecording(_controller.state.audioPath!);
 
       if (!mounted) return;
 
@@ -177,7 +180,10 @@ class _RecordScreenState extends State<RecordScreen> {
                       radius: 16,
                       backgroundColor: AppTheme.primaryOrange,
                       child: Text(
-                        _currentUser!.displayName?.substring(0, 1).toUpperCase() ?? 'U',
+                        _currentUser!.displayName
+                                ?.substring(0, 1)
+                                .toUpperCase() ??
+                            'U',
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
@@ -237,9 +243,9 @@ class _RecordScreenState extends State<RecordScreen> {
                 Text(
                   state.formattedTime,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    fontSize: 64,
-                    fontWeight: FontWeight.w300,
-                  ),
+                        fontSize: 64,
+                        fontWeight: FontWeight.w300,
+                      ),
                 ),
                 const SizedBox(height: 24),
                 Container(
@@ -252,7 +258,9 @@ class _RecordScreenState extends State<RecordScreen> {
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
-                    state.status == RecordStatus.recording ? Icons.mic : Icons.pause,
+                    state.status == RecordStatus.recording
+                        ? Icons.mic
+                        : Icons.pause,
                     color: Colors.white,
                     size: 48,
                   ),
@@ -266,7 +274,9 @@ class _RecordScreenState extends State<RecordScreen> {
                           ? _controller.pauseRecording
                           : _controller.resumeRecording,
                       icon: Icon(
-                        state.status == RecordStatus.recording ? Icons.pause : Icons.play_arrow,
+                        state.status == RecordStatus.recording
+                            ? Icons.pause
+                            : Icons.play_arrow,
                       ),
                       iconSize: 32,
                       style: IconButton.styleFrom(
@@ -305,7 +315,8 @@ class _RecordScreenState extends State<RecordScreen> {
                 ),
               ] else if (state.status == RecordStatus.uploading) ...[
                 const CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(AppTheme.primaryOrange),
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(AppTheme.primaryOrange),
                 ),
                 const SizedBox(height: 24),
                 Text(

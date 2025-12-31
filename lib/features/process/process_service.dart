@@ -1,6 +1,6 @@
 // lib/features/process/process_service.dart
-import '../note/note_model.dart';
 import '../../services/ai_service.dart';
+import '../note/note_model.dart';
 
 class ProcessService {
   final AiService _aiService = AiService();

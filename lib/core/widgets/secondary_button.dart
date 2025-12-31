@@ -1,5 +1,6 @@
 // lib/core/widgets/secondary_button.dart
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
@@ -32,33 +33,33 @@ class SecondaryButton extends StatelessWidget {
       ),
       child: isLoading
           ? SizedBox(
-        width: 24,
-        height: 24,
-        child: CircularProgressIndicator(
-          strokeWidth: 2,
-          valueColor: AlwaysStoppedAnimation<Color>(
-            AppColors.textPrimary,
-          ),
-        ),
-      )
+              width: 24,
+              height: 24,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  AppColors.textPrimary,
+                ),
+              ),
+            )
           : icon != null
-          ? Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 20),
-          const SizedBox(width: AppSpacing.sm),
-          Text(text, style: AppTypography.button),
-        ],
-      )
-          : Text(text, style: AppTypography.button),
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(icon, size: 20),
+                    const SizedBox(width: AppSpacing.sm),
+                    Text(text, style: AppTypography.button),
+                  ],
+                )
+              : Text(text, style: AppTypography.button),
     );
 
     return fullWidth
         ? SizedBox(
-      width: double.infinity,
-      child: button,
-    )
+            width: double.infinity,
+            child: button,
+          )
         : button;
   }
 }

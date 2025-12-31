@@ -1,9 +1,10 @@
 // lib/features/auth/presentation/auth_modal.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../providers/auth_provider.dart';
 
 class AuthModal extends StatelessWidget {
@@ -116,40 +117,40 @@ class _GoogleSignInButton extends StatelessWidget {
         ),
         child: isLoading
             ? const SizedBox(
-          width: 24,
-          height: 24,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              AppColors.textPrimary,
-            ),
-          ),
-        )
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    AppColors.textPrimary,
+                  ),
+                ),
+              )
             : Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/google_logo.png',
-              width: 20,
-              height: 20,
-              errorBuilder: (context, error, stackTrace) {
-                // Fallback to icon if image not found
-                return const Icon(
-                  Icons.login_rounded,
-                  size: 20,
-                  color: AppColors.primary,
-                );
-              },
-            ),
-            const SizedBox(width: AppSpacing.sm),
-            Text(
-              'Continue with Google',
-              style: AppTypography.button.copyWith(
-                color: AppColors.textPrimary,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/google_logo.png',
+                    width: 20,
+                    height: 20,
+                    errorBuilder: (context, error, stackTrace) {
+                      // Fallback to icon if image not found
+                      return const Icon(
+                        Icons.login_rounded,
+                        size: 20,
+                        color: AppColors.primary,
+                      );
+                    },
+                  ),
+                  const SizedBox(width: AppSpacing.sm),
+                  Text(
+                    'Continue with Google',
+                    style: AppTypography.button.copyWith(
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }

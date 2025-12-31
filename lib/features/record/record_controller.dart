@@ -1,10 +1,12 @@
 // lib/features/record/record_controller.dart
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'record_state.dart';
-import '../../services/audio_service.dart';
+
 import '../../core/utils/permissions.dart';
+import '../../services/audio_service.dart';
+import 'record_state.dart';
 
 class RecordController extends ChangeNotifier {
   RecordState _state = RecordState.initial();
@@ -25,7 +27,8 @@ class RecordController extends ChangeNotifier {
 
     try {
       final tempDir = await getTemporaryDirectory();
-      final filePath = '${tempDir.path}/recording_${DateTime.now().millisecondsSinceEpoch}.m4a';
+      final filePath =
+          '${tempDir.path}/recording_${DateTime.now().millisecondsSinceEpoch}.m4a';
 
       await _audioService.startRecording(filePath);
 
@@ -89,7 +92,8 @@ class RecordController extends ChangeNotifier {
   }
 
   Future<void> stopRecording() async {
-    if (_state.status != RecordStatus.recording && _state.status != RecordStatus.paused) {
+    if (_state.status != RecordStatus.recording &&
+        _state.status != RecordStatus.paused) {
       return;
     }
 

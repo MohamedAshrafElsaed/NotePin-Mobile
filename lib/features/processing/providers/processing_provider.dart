@@ -1,6 +1,8 @@
 // lib/features/processing/providers/processing_provider.dart
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
+
 import '../../../services/ai_service.dart';
 import '../../note/note_model.dart';
 
@@ -27,10 +29,15 @@ class ProcessingProvider extends ChangeNotifier {
   ProcessingProvider({required this.recordingId});
 
   ProcessingStep get currentStep => _currentStep;
+
   double get progress => _progress;
+
   String? get error => _error;
+
   NoteModel? get result => _result;
+
   bool get isComplete => _currentStep == ProcessingStep.complete;
+
   bool get hasError => _currentStep == ProcessingStep.error;
 
   String get stepTitle {

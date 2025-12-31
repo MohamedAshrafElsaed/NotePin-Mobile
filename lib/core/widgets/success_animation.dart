@@ -1,8 +1,9 @@
 // lib/core/widgets/success_animation.dart
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
-import '../theme/app_typography.dart';
 import '../theme/app_spacing.dart';
+import '../theme/app_typography.dart';
 
 class SuccessAnimation extends StatefulWidget {
   final String title;
@@ -173,11 +174,11 @@ class SuccessOverlay extends StatelessWidget {
   });
 
   static void show(
-      BuildContext context, {
-        required String title,
-        String? subtitle,
-        VoidCallback? onComplete,
-      }) {
+    BuildContext context, {
+    required String title,
+    String? subtitle,
+    VoidCallback? onComplete,
+  }) {
     showDialog(
       context: context,
       barrierDismissible: false,

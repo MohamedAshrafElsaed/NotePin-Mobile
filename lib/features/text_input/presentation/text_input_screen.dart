@@ -1,8 +1,9 @@
 // lib/features/text_input/presentation/text_input_screen.dart
 import 'package:flutter/material.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/primary_button.dart';
 import '../../../services/api_service.dart';
 import '../../process/process_screen.dart';
@@ -21,7 +22,9 @@ class _TextInputScreenState extends State<TextInputScreen> {
   bool _isProcessing = false;
 
   int get _currentLength => _textController.text.length;
-  bool get _isValid => _currentLength >= _minChars && _currentLength <= _maxChars;
+
+  bool get _isValid =>
+      _currentLength >= _minChars && _currentLength <= _maxChars;
 
   @override
   void dispose() {
@@ -127,7 +130,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
                             const SizedBox(width: AppSpacing.xs),
                             Expanded(
                               child: Text(
-                                'Text is too long. Please reduce to ${_maxChars} characters.',
+                                'Text is too long. Please reduce to $_maxChars characters.',
                                 style: AppTypography.bodySmall.copyWith(
                                   color: AppColors.error,
                                 ),

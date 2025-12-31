@@ -1,13 +1,14 @@
 // lib/features/home/presentation/widgets/recent_notes_widget.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_typography.dart';
 import '../../../../core/theme/app_spacing.dart';
-import '../../../notes_list/providers/notes_provider.dart';
-import '../../../notes_list/presentation/notes_list_screen.dart';
-import '../../../note/note_screen.dart';
+import '../../../../core/theme/app_typography.dart';
 import '../../../note/note_model.dart';
+import '../../../note/note_screen.dart';
+import '../../../notes_list/presentation/notes_list_screen.dart';
+import '../../../notes_list/providers/notes_provider.dart';
 
 class RecentNotesWidget extends StatelessWidget {
   const RecentNotesWidget({super.key});
@@ -55,7 +56,7 @@ class RecentNotesWidget extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: recentNotes.length,
                 separatorBuilder: (context, index) =>
-                const SizedBox(width: AppSpacing.sm),
+                    const SizedBox(width: AppSpacing.sm),
                 itemBuilder: (context, index) {
                   return _RecentNoteCard(note: recentNotes[index]);
                 },

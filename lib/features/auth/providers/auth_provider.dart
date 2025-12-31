@@ -1,19 +1,25 @@
-// lib/features/auth/providers/auth_provider.dart
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../shared/models/user_model.dart';
 
 class AuthProvider extends ChangeNotifier {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
 
+  StreamSubscription<GoogleSignInAuthenticationEvent>? _authSubscription;
   UserModel? _user;
   bool _isLoading = false;
   String? _error;
 
   UserModel? get user => _user;
+
   bool get isAuthenticated => _user != null;
+
   bool get isLoading => _isLoading;
+
   String? get error => _error;
 
   AuthProvider() {
@@ -24,8 +30,8 @@ class AuthProvider extends ChangeNotifier {
     try {
       await _googleSignIn.initialize();
 
-      // Listen for sign-in events
-      _googleSignIn.authenticationEvents.listen(
+      // Listen for authentication events
+      _authSubscription = _googleSignIn.authenticationEvents.listen(
         _handleAuthenticationEvent,
         onError: (error) {
           debugPrint('Auth error: $error');
@@ -37,8 +43,10 @@ class AuthProvider extends ChangeNotifier {
       // Attempt lightweight authentication
       await _googleSignIn.attemptLightweightAuthentication();
 
-      // Load saved user data
-      await _loadSavedUser();
+      // Load saved user data if not authenticated
+      if (_user == null) {
+        await _loadSavedUser();
+      }
     } catch (e) {
       debugPrint('Auth initialization error: $e');
     }
@@ -102,6 +110,7 @@ class AuthProvider extends ChangeNotifier {
       _error = null;
       notifyListeners();
 
+      // Authenticate will trigger the authentication event
       await _googleSignIn.authenticate();
 
       _isLoading = false;
@@ -116,7 +125,7 @@ class AuthProvider extends ChangeNotifier {
   Future<void> signOut() async {
     try {
       await _googleSignIn.signOut();
-      _clearUser();
+      // The signOut event will be handled by _handleAuthenticationEvent
     } catch (e) {
       debugPrint('Sign out error: $e');
     }
@@ -127,5 +136,11 @@ class AuthProvider extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _authSubscription?.cancel();
+    super.dispose();
   }
 }

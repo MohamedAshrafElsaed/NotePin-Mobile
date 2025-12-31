@@ -1,13 +1,14 @@
 // lib/features/onboarding/presentation/onboarding_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/primary_button.dart';
+import '../../home/presentation/home_screen.dart';
 import '../providers/onboarding_provider.dart';
 import 'widgets/onboarding_page.dart';
-import '../../home/presentation/home_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -23,13 +24,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     OnboardingPageData(
       icon: Icons.mic_rounded,
       title: 'Voice in. Clarity out.',
-      subtitle: 'Record meetings, voice notes, or paste any text — get instant summaries and action items.',
+      subtitle:
+          'Record meetings, voice notes, or paste any text — get instant summaries and action items.',
       iconColor: AppColors.primary,
     ),
     OnboardingPageData(
       icon: Icons.auto_awesome_rounded,
       title: 'AI extracts what matters',
-      subtitle: 'Smart summaries, action items with owners and dates, all organized automatically.',
+      subtitle:
+          'Smart summaries, action items with owners and dates, all organized automatically.',
       iconColor: AppColors.primary,
     ),
     OnboardingPageData(
@@ -98,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       _pages.length,
-                          (index) => AnimatedContainer(
+                      (index) => AnimatedContainer(
                         duration: Duration(
                           milliseconds: AppSpacing.animationNormal,
                         ),
@@ -181,10 +184,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Future<void> _completeAndNavigate(
-      OnboardingProvider provider, {
-        bool startRecording = false,
-        bool openTextInput = false,
-      }) async {
+    OnboardingProvider provider, {
+    bool startRecording = false,
+    bool openTextInput = false,
+  }) async {
     await provider.completeOnboarding();
 
     if (!mounted) return;

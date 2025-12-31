@@ -1,12 +1,13 @@
 // lib/features/auth/widgets/auth_gate.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/primary_button.dart';
-import '../providers/auth_provider.dart';
 import '../presentation/auth_modal.dart';
+import '../providers/auth_provider.dart';
 
 class AuthGate extends StatelessWidget {
   final Widget child;
@@ -103,10 +104,10 @@ class _AuthRequiredView extends StatelessWidget {
 
 class AuthGateDialog {
   static Future<bool> show(
-      BuildContext context, {
-        String? title,
-        String? message,
-      }) async {
+    BuildContext context, {
+    String? title,
+    String? message,
+  }) async {
     final result = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(

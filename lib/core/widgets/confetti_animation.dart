@@ -1,6 +1,8 @@
 // lib/core/widgets/confetti_animation.dart
 import 'dart:math';
+
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
 
 class ConfettiAnimation extends StatefulWidget {
@@ -120,7 +122,8 @@ class _ConfettiPainter extends CustomPainter {
       // Update particle position
       final newY = particle.y + (particle.vy * progress);
       final newX = particle.x + (particle.vx * progress);
-      final newRotation = particle.rotation + (particle.rotationSpeed * progress * 10);
+      final newRotation =
+          particle.rotation + (particle.rotationSpeed * progress * 10);
 
       // Skip if particle is off screen
       if (newY > 1.2 || newX < -0.2 || newX > 1.2) continue;

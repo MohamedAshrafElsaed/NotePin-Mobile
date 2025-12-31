@@ -42,8 +42,10 @@ class RecordState {
   }
 
   String get formattedTime {
-    final minutes = remainingTime.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = remainingTime.inSeconds.remainder(60).toString().padLeft(2, '0');
+    final minutes =
+        remainingTime.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final seconds =
+        remainingTime.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$minutes:$seconds';
   }
 }

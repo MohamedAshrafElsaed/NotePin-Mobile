@@ -2,13 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'note_model.dart';
-import 'widgets/share_sheet.dart';
+
 import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_typography.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_typography.dart';
 import '../../core/widgets/primary_button.dart';
 import '../../core/widgets/status_badge.dart';
+import 'note_model.dart';
+import 'widgets/share_sheet.dart';
 
 class NoteScreen extends StatefulWidget {
   final NoteModel note;
@@ -47,6 +48,7 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   int get _completedCount => _checkedItems.where((checked) => checked).length;
+
   int get _totalCount => _checkedItems.length;
 
   @override
@@ -58,7 +60,7 @@ class _NoteScreenState extends State<NoteScreen> {
         leading: IconButton(
           icon: const Icon(Icons.close_rounded),
           onPressed: () => Navigator.of(context).popUntil(
-                (route) => route.isFirst,
+            (route) => route.isFirst,
           ),
         ),
         title: const Text('Your Note'),
@@ -170,7 +172,7 @@ class _NoteScreenState extends State<NoteScreen> {
                     child: Column(
                       children: List.generate(
                         widget.note.actionItems.length,
-                            (index) => _ActionItemTile(
+                        (index) => _ActionItemTile(
                           text: widget.note.actionItems[index],
                           isChecked: _checkedItems[index],
                           onChanged: (value) {
@@ -436,9 +438,8 @@ class _ActionItemTile extends StatelessWidget {
                     child: Text(
                       text,
                       style: AppTypography.bodyLarge.copyWith(
-                        decoration: isChecked
-                            ? TextDecoration.lineThrough
-                            : null,
+                        decoration:
+                            isChecked ? TextDecoration.lineThrough : null,
                         color: isChecked
                             ? AppColors.textTertiary
                             : AppColors.textPrimary,

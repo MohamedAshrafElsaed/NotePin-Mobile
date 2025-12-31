@@ -1,8 +1,9 @@
 // lib/core/widgets/tips_widget.dart
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
-import '../theme/app_typography.dart';
 import '../theme/app_spacing.dart';
+import '../theme/app_typography.dart';
 
 class TipsDialog extends StatelessWidget {
   const TipsDialog({super.key});
@@ -60,7 +61,7 @@ class TipsDialog extends StatelessWidget {
               icon: Icons.mic_rounded,
               title: 'Record clearly',
               description:
-              'Speak clearly in a quiet environment for best results.',
+                  'Speak clearly in a quiet environment for best results.',
             ),
             const _TipItem(
               icon: Icons.timer_rounded,
@@ -71,13 +72,13 @@ class TipsDialog extends StatelessWidget {
               icon: Icons.edit_note_rounded,
               title: 'Or paste text',
               description:
-              'Copy and paste text from chats or documents to process.',
+                  'Copy and paste text from chats or documents to process.',
             ),
             const _TipItem(
               icon: Icons.checklist_rounded,
               title: 'Smart action items',
               description:
-              'AI automatically extracts tasks and to-dos from your notes.',
+                  'AI automatically extracts tasks and to-dos from your notes.',
             ),
             const SizedBox(height: AppSpacing.md),
           ],

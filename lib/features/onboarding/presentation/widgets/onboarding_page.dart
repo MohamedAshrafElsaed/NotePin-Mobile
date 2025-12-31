@@ -1,8 +1,9 @@
 // lib/features/onboarding/presentation/widgets/onboarding_page.dart
 import 'package:flutter/material.dart';
+
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_typography.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_typography.dart';
 
 class OnboardingPageData {
   final IconData icon;

@@ -1,8 +1,9 @@
 // lib/core/widgets/status_badge.dart
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
-import '../theme/app_typography.dart';
 import '../theme/app_spacing.dart';
+import '../theme/app_typography.dart';
 
 enum StatusBadgeType {
   info,
@@ -132,7 +133,8 @@ class _PulsingDotState extends State<_PulsingDot>
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: widget.color.withOpacity(0.4 + (_controller.value * 0.6)),
+                color:
+                    widget.color.withOpacity(0.4 + (_controller.value * 0.6)),
                 shape: BoxShape.circle,
               ),
             ),
@@ -207,7 +209,8 @@ class _RecordingIndicatorState extends State<RecordingIndicator>
               width: 12,
               height: 12,
               decoration: BoxDecoration(
-                color: AppColors.error.withOpacity(0.3 + (_controller.value * 0.7)),
+                color: AppColors.error
+                    .withOpacity(0.3 + (_controller.value * 0.7)),
                 shape: BoxShape.circle,
               ),
             ),

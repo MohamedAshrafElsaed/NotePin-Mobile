@@ -1,5 +1,6 @@
 // lib/features/notes_list/providers/notes_provider.dart
 import 'package:flutter/foundation.dart';
+
 import '../../note/note_model.dart';
 import '../data/notes_repository.dart';
 
@@ -23,18 +24,25 @@ class NotesProvider extends ChangeNotifier {
   int _currentPage = 1;
 
   NotesLoadingState get state => _state;
+
   List<NoteModel> get notes => _searchQuery.isEmpty
       ? _notes
       : _notes
-      .where((note) =>
-  note.aiTitle.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-      note.aiSummary.toLowerCase().contains(_searchQuery.toLowerCase()))
-      .toList();
+          .where((note) =>
+              note.aiTitle.toLowerCase().contains(_searchQuery.toLowerCase()) ||
+              note.aiSummary.toLowerCase().contains(_searchQuery.toLowerCase()))
+          .toList();
+
   String? get error => _error;
+
   bool get hasMore => _hasMore;
+
   bool get isEmpty => _notes.isEmpty && _state == NotesLoadingState.loaded;
+
   bool get isLoading => _state == NotesLoadingState.loading;
+
   bool get isRefreshing => _state == NotesLoadingState.refreshing;
+
   String get searchQuery => _searchQuery;
 
   Future<void> loadNotes() async {

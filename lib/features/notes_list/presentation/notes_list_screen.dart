@@ -1,13 +1,15 @@
 // lib/features/notes_list/presentation/notes_list_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/loading_view.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/error_view.dart';
-import '../providers/notes_provider.dart';
+import '../../../core/widgets/loading_view.dart';
+import '../../note/note_model.dart';
 import '../../note/note_screen.dart';
+import '../providers/notes_provider.dart';
 import 'widgets/note_card.dart';
 import 'widgets/notes_search_bar.dart';
 
@@ -104,9 +106,11 @@ class _NotesListScreenState extends State<NotesListScreen> {
                     controller: _scrollController,
                     padding: const EdgeInsets.all(AppSpacing.md),
                     itemCount: provider.notes.length +
-                        (provider.state == NotesLoadingState.loadingMore ? 1 : 0),
+                        (provider.state == NotesLoadingState.loadingMore
+                            ? 1
+                            : 0),
                     separatorBuilder: (context, index) =>
-                    const SizedBox(height: AppSpacing.sm),
+                        const SizedBox(height: AppSpacing.sm),
                     itemBuilder: (context, index) {
                       if (index == provider.notes.length) {
                         return const Padding(

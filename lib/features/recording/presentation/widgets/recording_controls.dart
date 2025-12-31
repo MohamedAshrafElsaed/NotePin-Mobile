@@ -1,5 +1,6 @@
 // lib/features/recording/presentation/widgets/recording_controls.dart
 import 'package:flutter/material.dart';
+
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 
@@ -40,17 +41,19 @@ class RecordingControlButton extends StatelessWidget {
                 : null,
             boxShadow: isPrimary
                 ? [
-              BoxShadow(
-                color: (backgroundColor ?? AppColors.primary).withOpacity(0.3),
-                blurRadius: 16,
-                offset: const Offset(0, 4),
-              ),
-            ]
+                    BoxShadow(
+                      color: (backgroundColor ?? AppColors.primary)
+                          .withOpacity(0.3),
+                      blurRadius: 16,
+                      offset: const Offset(0, 4),
+                    ),
+                  ]
                 : null,
           ),
           child: Icon(
             icon,
-            color: iconColor ?? (isPrimary ? Colors.white : AppColors.textPrimary),
+            color:
+                iconColor ?? (isPrimary ? Colors.white : AppColors.textPrimary),
             size: size * 0.4,
           ),
         ),
@@ -135,8 +138,9 @@ class _AnimatedRecordButtonState extends State<AnimatedRecordButton>
                 boxShadow: [
                   BoxShadow(
                     color: (widget.isRecording
-                        ? AppColors.error
-                        : AppColors.primary).withOpacity(0.4),
+                            ? AppColors.error
+                            : AppColors.primary)
+                        .withOpacity(0.4),
                     blurRadius: 24,
                     offset: const Offset(0, 8),
                   ),

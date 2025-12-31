@@ -1,6 +1,8 @@
 // lib/services/ai_service.dart
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+
 import '../features/note/note_model.dart';
 import 'api_service.dart';
 

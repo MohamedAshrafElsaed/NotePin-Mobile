@@ -1,5 +1,6 @@
 // lib/core/widgets/primary_button.dart
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
@@ -38,31 +39,31 @@ class PrimaryButton extends StatelessWidget {
       ),
       child: isLoading
           ? const SizedBox(
-        width: 24,
-        height: 24,
-        child: CircularProgressIndicator(
-          strokeWidth: 2,
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-        ),
-      )
+              width: 24,
+              height: 24,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            )
           : icon != null
-          ? Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 20),
-          const SizedBox(width: AppSpacing.sm),
-          Text(text, style: AppTypography.button),
-        ],
-      )
-          : Text(text, style: AppTypography.button),
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(icon, size: 20),
+                    const SizedBox(width: AppSpacing.sm),
+                    Text(text, style: AppTypography.button),
+                  ],
+                )
+              : Text(text, style: AppTypography.button),
     );
 
     return fullWidth
         ? SizedBox(
-      width: double.infinity,
-      child: button,
-    )
+            width: double.infinity,
+            child: button,
+          )
         : button;
   }
 }

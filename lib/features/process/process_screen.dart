@@ -1,14 +1,14 @@
 // lib/features/process/process_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_typography.dart';
 import '../../core/theme/app_spacing.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../core/theme/app_typography.dart';
 import '../../core/widgets/error_view.dart';
-import '../processing/providers/processing_provider.dart';
-import '../processing/presentation/widgets/processing_animation.dart';
 import '../note/note_screen.dart';
+import '../processing/presentation/widgets/processing_animation.dart';
+import '../processing/providers/processing_provider.dart';
 
 class ProcessScreen extends StatelessWidget {
   final String recordingId;
@@ -21,8 +21,8 @@ class ProcessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => ProcessingProvider(recordingId: recordingId)
-        ..startProcessing(),
+      create: (_) =>
+          ProcessingProvider(recordingId: recordingId)..startProcessing(),
       child: const _ProcessScreenContent(),
     );
   }
@@ -55,7 +55,7 @@ class _ProcessScreenContent extends StatelessWidget {
               error: provider.error ?? 'Unknown error',
               onRetry: provider.retry,
               onCancel: () => Navigator.of(context).popUntil(
-                    (route) => route.isFirst,
+                (route) => route.isFirst,
               ),
             );
           }
@@ -242,7 +242,7 @@ class _ProcessingStepsList extends StatelessWidget {
       child: Column(
         children: List.generate(
           steps.length,
-              (index) => _ProcessingStepItem(
+          (index) => _ProcessingStepItem(
             info: steps[index],
             isActive: index == currentStep,
             isComplete: index < currentStep,
@@ -293,8 +293,8 @@ class _ProcessingStepItem extends StatelessWidget {
                 color: isActive
                     ? AppColors.primary
                     : isComplete
-                    ? AppColors.success
-                    : AppColors.borderLight,
+                        ? AppColors.success
+                        : AppColors.borderLight,
                 shape: BoxShape.circle,
               ),
               child: Icon(

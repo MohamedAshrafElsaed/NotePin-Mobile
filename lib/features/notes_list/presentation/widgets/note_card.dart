@@ -1,9 +1,10 @@
 // lib/features/notes_list/presentation/widgets/note_card.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_typography.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_typography.dart';
 import '../../../note/note_model.dart';
 
 class NoteCard extends StatelessWidget {

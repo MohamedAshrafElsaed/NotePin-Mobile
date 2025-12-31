@@ -23,8 +23,8 @@ class NoteModel {
       aiTitle: json['aiTitle'] ?? json['title'] ?? 'Untitled',
       aiSummary: json['aiSummary'] ?? json['summary'] ?? '',
       actionItems: (json['actionItems'] as List<dynamic>?)
-          ?.map((e) => e.toString())
-          .toList() ??
+              ?.map((e) => e.toString())
+              .toList() ??
           [],
       createdAt: json['createdAt'] != null
           ? DateTime.parse(json['createdAt'])

@@ -1,24 +1,24 @@
 // lib/core/widgets/permission_dialog.dart
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+
 import '../theme/app_colors.dart';
-import '../theme/app_typography.dart';
 import '../theme/app_spacing.dart';
+import '../theme/app_typography.dart';
 import 'primary_button.dart';
-import 'secondary_button.dart';
 
 class PermissionDialog {
   static Future<void> showMicrophonePermissionDialog(
-      BuildContext context, {
-        required VoidCallback onGranted,
-      }) async {
+    BuildContext context, {
+    required VoidCallback onGranted,
+  }) async {
     final result = await showDialog<bool>(
       context: context,
       barrierDismissible: false,
       builder: (context) => const _PermissionDialog(
         title: 'Microphone Access Required',
         message:
-        'NotePin needs access to your microphone to record voice notes. Your privacy is important - recordings are only processed when you choose to upload them.',
+            'NotePin needs access to your microphone to record voice notes. Your privacy is important - recordings are only processed when you choose to upload them.',
         icon: Icons.mic_rounded,
         permissionName: 'Microphone',
       ),
@@ -30,9 +30,9 @@ class PermissionDialog {
   }
 
   static Future<void> showPermissionDeniedDialog(
-      BuildContext context, {
-        required String permissionName,
-      }) async {
+    BuildContext context, {
+    required String permissionName,
+  }) async {
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(

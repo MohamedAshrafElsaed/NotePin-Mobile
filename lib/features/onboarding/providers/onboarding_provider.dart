@@ -11,8 +11,11 @@ class OnboardingProvider extends ChangeNotifier {
   static const String _onboardingKey = 'onboarding_complete';
 
   int get currentPage => _currentPage;
+
   bool get isComplete => _isComplete;
+
   int get totalPages => 3;
+
   bool get isLastPage => _currentPage == totalPages - 1;
 
   OnboardingProvider(this._prefs) {

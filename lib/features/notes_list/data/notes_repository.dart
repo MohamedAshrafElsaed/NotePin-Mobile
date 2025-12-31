@@ -1,6 +1,8 @@
 // lib/features/notes_list/data/notes_repository.dart
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+
 import '../../../services/api_service.dart';
 import '../../note/note_model.dart';
 
@@ -84,7 +86,8 @@ class NotesRepository {
     }
   }
 
-  Future<NoteModel> updateNote(String noteId, Map<String, dynamic> updates) async {
+  Future<NoteModel> updateNote(
+      String noteId, Map<String, dynamic> updates) async {
     try {
       final response = await http.patch(
         Uri.parse('${ApiService.baseUrl}/notes/$noteId'),
